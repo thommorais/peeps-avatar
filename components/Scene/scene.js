@@ -16,10 +16,6 @@ async function scene(canvas) {
 
 	const { scene } = await webglStuff(canvas)
 
-	const { default: setRectAreaLight } = await import('./reactAreaLight')
-	const lights = await setRectAreaLight()
-	lights.forEach((light) => scene.add(light))
-
 	const [model, modelScene] = await addTheModel(console.log)
 
 	model.traverse((child) => {
@@ -119,8 +115,15 @@ async function scene(canvas) {
 	const clock = new Clock()
 
 	const { default: Stats } = await import('three/addons/libs/stats.module.js')
+	const prevStats = document.querySelector('.stats')
+	if (prevStats) {
+		document.querySelector('#__next').removeChild(prevStats)
+	}
+
 	const stats = new Stats()
 	const container = document.getElementById('__next')
+	stats.dom.classList.add('stats')
+
 	container.appendChild(stats.dom)
 
 	scene.add(model)

@@ -16,9 +16,7 @@ function Scene() {
 
         return () => {
             cancelIdleCallback(mout)
-            if (typeof clear === 'function') {
-                clear()
-            }
+            clear?.()
         }
     }, [])
 

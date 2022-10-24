@@ -90,6 +90,23 @@ export async function createSpotLight() {
 	return spotLight
 }
 
+export async function setRectAreaLight() {
+	const { RectAreaLight } = await import('three')
+
+	const softboxLeft = new RectAreaLight(0x777777, 20, 20, 20)
+	softboxLeft.position.set(15, 25, 20)
+
+	const softBoxRight = new RectAreaLight(0x777777, 20, 20, 20)
+	softBoxRight.position.set(-15, 25, 20)
+
+	const softBoxBack = new RectAreaLight(0x777777, 20, 40, 20)
+	softBoxBack.position.set(0, 15, -20)
+
+	return [softBoxBack, softBoxRight, softboxLeft]
+}
+
+
+
 export default async function webglStuff(canvas) {
 	const { getDefaultSizes } = await import('./utils')
 
@@ -107,6 +124,10 @@ export default async function webglStuff(canvas) {
 	scene.add(directionalLight)
 	scene.add(hemisphereLight)
 	scene.add(spotLight)
+
+	const lights = await setRectAreaLight()
+	lights.forEach((light) => scene.add(light))
+
 
 	const renderFunc = () => renderer.render(scene, camera)
 
