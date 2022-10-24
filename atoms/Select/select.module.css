@@ -1,0 +1,66 @@
+.trigger {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 5px;
+	composes: select from '_styles/form.module.css';
+	color: var(--colors-surface3);
+	background: transparent;
+	@apply select-none;
+}
+
+.content {
+	z-index: 55;
+	overflow: hidden;
+	border-radius: 0.5rem;
+	background: var(--colors-surface2);
+	@apply shadow-xl;
+}
+
+.viewport {
+	padding: 0.5rem;
+}
+
+.label {
+	padding: 0 2.5rem;
+	font-size: 1.2rem;
+	line-height: 2.5rem;
+}
+
+.item {
+	position: relative;
+	all: unset;
+	display: flex;
+	align-items: center;
+	padding: 0.5rem 2.5rem;
+	font-size: 1.25rem;
+	user-select: none;
+	color: var(--colors-text-2);
+	cursor: pointer;
+}
+
+.item[data-highlighted] {
+	background: var(--colors-surface3);
+}
+
+.scrollBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 2.5rem;
+	cursor: default;
+}
+
+.separator {
+	height: 0.1rem;
+	margin: 0.5rem;
+}
+
+.indicator {
+	position: absolute;
+	left: 0.75rem;
+	width: 2.5rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}

@@ -1,0 +1,35 @@
+.formElementsSurface {
+	--shadow-color: 0deg 0% 50%;
+	font-size: 1.25rem;
+	border-radius: 4px;
+	padding: 1rem 1.5rem;
+	background: var(--colors-surface2);
+}
+
+@media (prefers-color-scheme: dark) {
+	.formElementsSurface {
+		background: var(--colors-loContrast);
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	.input {
+		box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
+	}
+}
+
+.button,
+.input,
+.select {
+	composes: formElementsSurface;
+}
+
+.input,
+.checkbox {
+	border: 1px solid var(--colors-surface3);
+}
+
+.checkbox {
+	padding: 1rem;
+	composes: formElementsSurface;
+}
