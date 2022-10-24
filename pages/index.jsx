@@ -1,10 +1,10 @@
 import Head from 'next/head'
-import Selector from '_components/Selector'
+import Selector from '../components/Selector'
 
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 
-const DynamicScene = dynamic(() => import('_components/Scene'), {
+const DynamicScene = dynamic(() => import('../components/Scene'), {
   suspense: true,
 })
 
