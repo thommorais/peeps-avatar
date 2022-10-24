@@ -1,17 +1,17 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "_components/*": ["components/*"],
-      "_atoms/*": ["atoms/*"],
-      "_hooks/*": ["hooks/*"],
-      "_services/*": ["services/*"],
-      "_utils/*": ["utils/*"],
-      "_styles/*": ["styles/*"],
-      "_icons/*": ["atoms/Icons/*"],
-      "_stores/*": ["stores/*"],
-      "_enums/*": ["enums/*"],
-      "_consts/*": ["consts/*"]
-    }
-  }
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"_components/*": ["components/*"],
+			"_atoms/*": ["atoms/*"],
+			"_hooks/*": ["hooks/*"],
+			"_services/*": ["services/*"],
+			"_utils/*": ["utils/*"],
+			"_styles/*": ["styles/*"],
+			"_icons/*": ["atoms/Icons/*"],
+			"_stores/*": ["stores/*"],
+			"_enums/*": ["enums/*"],
+			"_consts/*": ["consts/*"]
+		}
+	}
 }
