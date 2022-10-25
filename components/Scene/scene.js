@@ -13,7 +13,6 @@ const critical = ['Scene', 'male_rig']
 async function scene(canvas) {
 	const { default: webglStuff } = await import('./webgl')
 	const { default: assetMaps } = await import('./assetsMap')
-	const { default: stats } = await import('./stats')
 
 
 	const { scene } = await webglStuff(canvas)
@@ -125,7 +124,11 @@ async function scene(canvas) {
 
 	animate()
 
-	await stats()
+
+	if (process.env.NODE_ENV === 'development') {
+		const { default: stats } = await import('./stats')
+		await stats()
+	}
 
 	return () => {
 		scene.remove(scene.children[0])
