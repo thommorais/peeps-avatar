@@ -5,10 +5,15 @@ import usePeepsStore from '_stores/peep.store'
 import Hairs from './Hairs'
 
 
+
+function Carousels() {
+    const bodyPart = usePeepsStore((store) => store.bodyPart)
+    return <>{bodyPart === 'hair' ? <Hairs /> : null} </>
+}
+
 function Selector() {
 
     const setBodyPart = usePeepsStore((store) => store.setBodyPart)
-    const bodyPart = usePeepsStore((store) => store.bodyPart)
     const bodyParts = usePeepsStore((store) => store.bodyParts)
 
     const pageSizeOptions = bodyParts.map((opt) => ({
@@ -23,7 +28,7 @@ function Selector() {
     return (
         <div className={S.selector}>
             <Select onValueChange={onValueChange} options={pageSizeOptions} defaultValue={bodyParts[0]} />
-            {bodyPart === 'hair' ? <Hairs /> : null}
+            <Carousels />
         </div>
     )
 }

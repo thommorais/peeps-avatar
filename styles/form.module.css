@@ -3,7 +3,7 @@
 	font-size: 1.25rem;
 	border-radius: 4px;
 	padding: 1rem 1.5rem;
-	background: var(--colors-surface2);
+	background: var(--colors-surface-2);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,7 +26,7 @@
 
 .input,
 .checkbox {
-	border: 1px solid var(--colors-surface3);
+	border: 1px solid var(--colors-surface-3);
 }
 
 .checkbox {

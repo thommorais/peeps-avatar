@@ -4,7 +4,7 @@
 	justify-content: space-between;
 	gap: 5px;
 	composes: select from '_styles/form.module.css';
-	color: var(--colors-surface3);
+	color: var(--colors-text-2);
 	background: transparent;
 	@apply select-none;
 }
@@ -13,7 +13,7 @@
 	z-index: 55;
 	overflow: hidden;
 	border-radius: 0.5rem;
-	background: var(--colors-surface2);
+	background: var(--colors-surface-2);
 	@apply shadow-xl;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .item[data-highlighted] {
-	background: var(--colors-surface3);
+	background: var(--colors-surface-3);
 }
 
 .scrollBtn {

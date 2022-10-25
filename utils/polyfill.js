@@ -2,7 +2,7 @@
 if (typeof window !== "undefined") {
 
     window.requestIdleCallback =
-        window.requestIdleCallback ||
+        window?.requestIdleCallback ||
         function (cb) {
             var start = Date.now();
             return setTimeout(function () {
