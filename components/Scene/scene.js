@@ -13,6 +13,8 @@ const critical = ['Scene', 'male_rig']
 async function scene(canvas) {
 	const { default: webglStuff } = await import('./webgl')
 	const { default: assetMaps } = await import('./assetsMap')
+	const { default: stats } = await import('./stats')
+
 
 	const { scene } = await webglStuff(canvas)
 
@@ -113,29 +115,17 @@ async function scene(canvas) {
 
 	const { Clock } = await import('three')
 	const clock = new Clock()
-
-	const { default: Stats } = await import('three/addons/libs/stats.module.js')
-	const prevStats = document.querySelector('.stats')
-	if (prevStats) {
-		document.querySelector('#__next').removeChild(prevStats)
-	}
-
-	const stats = new Stats()
-	const container = document.getElementById('__next')
-	stats.dom.classList.add('stats')
-
-	container.appendChild(stats.dom)
-
 	scene.add(model)
 
 	function animate() {
 		const delta = clock.getDelta()
 		mixer.update(delta)
-		stats.update()
 		requestAnimationFrame(animate)
 	}
 
 	animate()
+
+	await stats()
 
 	return () => {
 		scene.remove(scene.children[0])
