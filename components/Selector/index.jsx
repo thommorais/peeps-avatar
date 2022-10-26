@@ -25,6 +25,7 @@ function Selector() {
         setBodyPart(value)
     }
 
+
     return (
         <div className={S.selector}>
             <Select onValueChange={onValueChange} options={pageSizeOptions} defaultValue={bodyParts[0]} />
