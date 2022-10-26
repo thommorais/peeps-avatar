@@ -33,7 +33,7 @@ export async function createOrbitControls(camera, canvas) {
 	orbitControls.enableDamping = true
 	orbitControls.enableZoom = false
 	orbitControls.enablePan = false
-	orbitControls.maxPolarAngle = Math.PI / 1.5
+	orbitControls.maxPolarAngle = Math.PI / 1.90
 	orbitControls.minPolarAngle = Math.PI / 3
 	return orbitControls
 }
