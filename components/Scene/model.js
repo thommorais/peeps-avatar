@@ -71,6 +71,13 @@ export default async function handleModel() {
 	const [model, modelScene] = await addTheModel(console.log)
 
 	model.traverse((child) => {
+		if (child?.parent?.name === 'male_rig' && (child.isMesh || child.isGroup)) {
+			console.log(child)
+		}
+	})
+
+
+	model.traverse((child) => {
 		if (child?.parent?.name === 'Scene') {
 			child.visible = false
 		}
@@ -81,6 +88,7 @@ export default async function handleModel() {
 			child.visible = false
 		}
 	})
+
 
 
 	const { default: assetMaps } = await import('./assetsMap')
@@ -101,10 +109,28 @@ export default async function handleModel() {
 		},
 	)
 
+	const shirtUpdate = usePeepsStore.subscribe(
+		(state) => state.shirt,
+		(shirt) => {
+			const shirts = Object.values(assetMaps.shirts).flat()
+			console.log(assetMaps.shirts[shirt])
+			model.traverse((child) => {
+				if (shirts.includes(child.name)) {
+					if (assetMaps.shirts[shirt].includes(child.name)) {
+						child.visible = true
+					} else {
+						child.visible = false
+					}
+				}
+			})
+		},
+	)
+
+
 	const { AnimationMixer } = await import('three')
 	const mixer = new AnimationMixer(model)
 
-	const gui = true
+	const gui = false
 
 	if (gui) {
 		const names = []
@@ -171,6 +197,6 @@ export default async function handleModel() {
 	}
 
 
-	return { model, modelAnimation, hairUpdate }
+	return { model, modelAnimation, hairUpdate, shirtUpdate }
 
 }

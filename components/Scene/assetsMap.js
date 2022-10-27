@@ -16,6 +16,21 @@ const map = {
         14: ['Hair_10'],
         15: ['hair_11'],
         16: ['Hair_12'],
+    },
+    shirts: {
+        1: ['Shirt'],
+        2: ['Shirt_with_vest'],
+        3: ['T-shirt'],
+        4: ['Male_Suit'],
+        5: ['Male_Turtleneck'],
+        6: ['police_shirt'],
+        7: ['dominican_shirt'],
+        8: ['business_shirt', 'business_coat'],
+
+        9: ['astro_body'],
+        10: ['African_shirt'],
+        11: ['anorak'],
+        12: ['Jumper']
     }
 }
 

@@ -3,7 +3,7 @@ async function scene(canvas) {
 	const { scene } = await webglStuff(canvas)
 
 	const { default: handleModel } = await import('./model')
-	const { model, modelAnimation } = await handleModel()
+	const { model } = await handleModel()
 	scene.add(model)
 
 	if (process.env.NODE_ENV === 'development') {

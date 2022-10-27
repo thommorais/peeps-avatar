@@ -6,7 +6,7 @@ const useStore = devtools((set) => ({
     bodyPart: 'hair',
     hair: 0,
     shirt: 0,
-    bodyParts: ['hair', 'eyebrow', 'shirt', 'legs'],
+    bodyParts: ['hair', 'shirt', 'legs'],
     setBodyPart: (bodyPart) => set({ bodyPart }),
     setHair: (hair) => set({ hair }),
     setShirt: (shirt) => set({ shirt })
