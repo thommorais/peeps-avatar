@@ -33,7 +33,7 @@ export async function createOrbitControls(camera, canvas) {
 	orbitControls.enableDamping = true
 	orbitControls.enableZoom = false
 	orbitControls.enablePan = false
-	orbitControls.maxPolarAngle = Math.PI / 1.90
+	orbitControls.maxPolarAngle = Math.PI / 1.9
 	orbitControls.minPolarAngle = Math.PI / 3
 	return orbitControls
 }
@@ -50,6 +50,7 @@ export async function creatPerspectiveCamera() {
 
 	const { aspect } = getDefaultSizes()
 	const camera = new PerspectiveCamera(45, aspect, 0.01, 720)
+	camera.focus = 0
 	camera.position.set(0, 0, 40)
 
 	return camera
@@ -80,7 +81,7 @@ export async function createDirectionalLight() {
 	dirLight.shadow.radius = 4
 	dirLight.shadow.bias = -0.0005
 	dirLight.shadow.normalBias = 0.75
-	dirLight.shadow.mapSize.setScalar(2048)
+	dirLight.shadow.mapSize.setScalar(720)
 
 	return dirLight
 }
@@ -156,14 +157,10 @@ async function lights(scene) {
 	// const hemisphereLight = await createHemisphereLight()
 	// const spotLight = await createSpotLight()
 
-	const lights = await setRectAreaLight()
-	lights.forEach((light) => scene.add(light))
+	const softboxes = await setRectAreaLight()
 
-	scene.add(ambientLight)
-	// scene.add(new DirectionalLightHelper(directionalLight, 1))
-	scene.add(directionalLight)
 
-	return { ambientLight, directionalLight, softboxes: lights }
+	return { ambientLight, directionalLight, softboxes }
 }
 
 export default async function webglStuff(canvas) {
@@ -175,7 +172,12 @@ export default async function webglStuff(canvas) {
 	const orbitControls = await createOrbitControls(camera, renderer.domElement)
 	const plane = await createPlane()
 
-	const sceneLights = await lights(scene)
+	const { ambientLight, directionalLight, softboxes } = await lights()
+
+	softboxes.forEach((light) => scene.add(light))
+	scene.add(ambientLight)
+	scene.add(directionalLight)
+
 	scene.add(plane)
 
 	const renderFunc = () => renderer.render(scene, camera)
@@ -194,5 +196,5 @@ export default async function webglStuff(canvas) {
 		renderer.setSize(width, height)
 	})
 
-	return { renderer, renderFunc, scene, camera, lights: sceneLights }
+	return { renderer, renderFunc, scene, camera, ambientLight, directionalLight, softboxes }
 }

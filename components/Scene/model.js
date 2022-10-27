@@ -101,12 +101,10 @@ export default async function handleModel() {
 		},
 	)
 
-
-
 	const { AnimationMixer } = await import('three')
 	const mixer = new AnimationMixer(model)
 
-	const gui = false
+	const gui = true
 
 	if (gui) {
 		const names = []
