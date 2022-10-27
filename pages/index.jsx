@@ -1,10 +1,14 @@
 import Head from 'next/head'
-import Selector from '_components/Selector'
 
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 
 const DynamicScene = dynamic(() => import('_components/Scene'), {
+  suspense: true,
+})
+
+
+const Selector = dynamic(() => import('_components/Selector'), {
   suspense: true,
 })
 
@@ -22,7 +26,9 @@ export default function Home() {
         <Suspense fallback={<div>Loading...</div>}>
           <DynamicScene />
         </Suspense>
-        <Selector />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Selector />
+        </Suspense>
       </main>
     </div>
   )

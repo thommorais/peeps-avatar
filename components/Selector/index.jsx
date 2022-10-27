@@ -3,12 +3,18 @@ import S from './selector.module.css'
 
 import usePeepsStore from '_stores/peep.store'
 import Hairs from './Hairs'
+import Shirts from './Shirts'
 
+
+const selectedBodyPart = {
+    shirt: <Shirts />,
+    hair: <Hairs />,
+}
 
 
 function Carousels() {
     const bodyPart = usePeepsStore((store) => store.bodyPart)
-    return <>{bodyPart === 'hair' ? <Hairs /> : null} </>
+    return <>{selectedBodyPart[bodyPart] || null} </>
 }
 
 function Selector() {

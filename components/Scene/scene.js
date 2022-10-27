@@ -6,7 +6,7 @@ async function addTheModel(callback) {
 	return [model, gltf]
 }
 
-const defaults = ['eye', 'Scene', 'body', 'nose', 'Eyebrow001', 'LEGS_1', 'Shirt']
+const defaults = ['eye', 'Scene', 'body', 'nose', 'Eyebrow001', 'LEGS_1', 'root']
 
 const critical = ['Scene', 'male_rig']
 
@@ -50,7 +50,7 @@ async function scene(canvas) {
 	const { AnimationMixer } = await import('three')
 	const mixer = new AnimationMixer(model)
 
-	const gui = false
+	const gui = true
 
 	if (gui) {
 		const names = []
@@ -58,9 +58,10 @@ async function scene(canvas) {
 
 		model.traverse((child) => {
 			//&& child.name.toLowerCase().includes('hair')
-			if (child?.parent?.name === 'male_rig') {
-
-			}
+			// if (child?.parent?.name === 'male_rig') {
+			// 	names.push(child.name)
+			// 	objMaps[child.name] = child
+			// }
 			names.push(child.name)
 			objMaps[child.name] = child
 		})
@@ -103,11 +104,11 @@ async function scene(canvas) {
 
 			btn.on('change', (ev) => {
 				child.visible = ev.value
-				if (child.children.length > 0) {
-					child.children.forEach((grandChild) => {
-						grandChild.visible = ev.value
-					})
-				}
+				// if (child.children.length > 0) {
+				// 	child.children.forEach((grandChild) => {
+				// 		grandChild.visible = ev.value
+				// 	})
+				// }
 			})
 		}
 	}
